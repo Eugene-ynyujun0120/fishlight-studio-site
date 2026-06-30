@@ -6,3 +6,10 @@ generated-contact-sheet.png
 fishlight-site-qr.png
 assets/ai-koubo-cover.png
 assets/case-*.png
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
