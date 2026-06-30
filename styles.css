@@ -400,10 +400,40 @@ a {
 
 .service-grid {
   max-width: var(--max);
-  margin: 66px auto 0;
+  margin: 48px auto 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid rgba(185, 150, 90, 0.28);
+}
+
+.service-visual {
+  position: relative;
+  max-width: var(--max);
+  margin: 54px auto 0;
+  min-height: clamp(220px, 34vw, 420px);
+  overflow: hidden;
+  border: 1px solid rgba(185, 150, 90, 0.26);
+  background: #050505;
+}
+
+.service-visual img {
+  width: 100%;
+  height: 100%;
+  min-height: clamp(220px, 34vw, 420px);
+  object-fit: cover;
+  opacity: 0.92;
+  filter: saturate(0.82) contrast(1.05);
+}
+
+.service-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(244, 241, 235, 0.08), transparent 30%, transparent 70%, rgba(244, 241, 235, 0.05)),
+    radial-gradient(circle at 78% 24%, rgba(214, 199, 161, 0.18), transparent 22%),
+    linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.44));
 }
 
 .service-item {
@@ -448,8 +478,8 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.76;
-  filter: saturate(0) contrast(1.16);
+  opacity: 0.82;
+  filter: saturate(0.68) contrast(1.1);
 }
 
 .cinema-strip::after {
@@ -531,7 +561,7 @@ a {
   width: 100%;
   height: 280px;
   object-fit: cover;
-  filter: saturate(0.1) contrast(1.08);
+  filter: saturate(0.34) contrast(1.08);
   opacity: 0.88;
   transition:
     transform 700ms var(--ease),
@@ -671,6 +701,9 @@ a {
 }
 
 .contact-panel {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   max-width: var(--max);
   margin: 0 auto;
   padding: clamp(36px, 7vw, 90px);
@@ -679,6 +712,33 @@ a {
     radial-gradient(circle at 78% 22%, rgba(185, 150, 90, 0.18), transparent 20%),
     radial-gradient(circle at 20% 18%, rgba(42, 24, 56, 0.24), transparent 28%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.07), transparent 42%);
+}
+
+.contact-panel > *:not(.contact-visual) {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-visual {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.36;
+  filter: saturate(0.74) contrast(1.08);
+}
+
+.contact-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.52) 58%, rgba(0, 0, 0, 0.72)),
+    radial-gradient(circle at 82% 16%, rgba(185, 150, 90, 0.16), transparent 24%);
 }
 
 .contact-panel h2 {
@@ -905,6 +965,11 @@ a {
   .service-grid,
   .case-grid {
     grid-template-columns: 1fr;
+  }
+
+  .service-visual,
+  .service-visual img {
+    min-height: 260px;
   }
 
   .service-item {
